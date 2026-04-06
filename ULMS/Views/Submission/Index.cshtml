@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ULMS.Models.Submission>
+
+<div class="container mt-4">
+
+    <h2 class="text-primary">Student Submissions</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div id="toastBox" class="custom-toast show">
+            @TempData["Message"]
+        </div>
+    }
+
+    <table class="table table-bordered table-striped">
+
+        <tr>
+            <th>Assignment</th>
+            <th>Student</th>
+            <th>File</th>
+            <th>Grade</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.AssignmentId</td>
+                <td>@s.StudentId</td>
+
+                <td>
+                    <a href="@s.FilePath" target="_blank" class="btn btn-info btn-sm">
+                        Download
+                    </a>
+                </td>
+
+                <td>@s.Grade</td>
+
+                <td>
+                    <a href="/Submission/Grade/@s.SubmissionId" class="btn btn-warning btn-sm">
+                        Grade
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var toast = document.getElementById("toastBox");
+
+        if (toast) {
+            setTimeout(function () {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+    });
+</script>

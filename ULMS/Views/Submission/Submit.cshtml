@@ -1,0 +1,21 @@
+﻿<div class="container mt-4">
+
+    <h2 class="text-primary">Submit Assignment</h2>
+
+    <form method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" value="@ViewBag.AssignmentId" />
+
+        <div class="form-group">
+            <label>Select File</label>
+            <input type="file" name="file" class="form-control" />
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="/Assignment" class="btn btn-secondary">Back</a>
+
+    </form>
+
+</div>
